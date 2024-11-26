@@ -1,13 +1,15 @@
 # PHP5.3系の環境構築
 
 1. php53ディレクトリを作成
+
 ```
 mkdir php53
 cd php53
 ```
 
 2. docker-compose.ymlを作成
-先制した`php53`ディレクトリ内に、`docker-compose.yml`を作成
+
+作成した`php53`ディレクトリ内に、`docker-compose.yml`を作成
 
 ```yml
 services:
@@ -23,6 +25,7 @@ services:
 ```
 
 3. dockerfileを作成
+
 `php53/os`ディレクトリに`dockerfile`を作成
 
 ```dockerfile
@@ -43,19 +46,23 @@ CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 ディレクトリ構成はこんな感じ
 
+```sh
 .
 ├── docker-compose.yml
 ├── os
 │   └── dockerfile
 └── src
     ├── #ここにサイトデータ（index.phpとか）を置いていく
+```
 
 4. docker composeコマンドを実行
+
 ```sh
 docker compose -f /hoge/php53/docker-compose.yml up -d
 ```
 
 5. index.phpの作成
+
 `php53/src`ディレクトリに`index.php`を作成
 
 ```php
@@ -74,7 +81,9 @@ docker compose -f /hoge/php53/docker-compose.yml up -d
 ```
 
 6. ブラウザでアクセス
+
 http://localhost:8080/index.php
+
 にアクセスして、index.phpの内容が表示されればOK
 
 ![HelloWorld](hello.png)
