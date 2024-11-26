@@ -1,0 +1,10 @@
+services:
+  web:
+    build: ./os/
+    platform: linux/x86_64
+    container_name:
+      php53_web
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html

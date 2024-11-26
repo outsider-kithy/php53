@@ -1,0 +1,13 @@
+FROM centos:6.9
+
+RUN sed -i 's/mirror.centos.org/vault.centos.org/g' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's/#baseurl/baseurl/g' /etc/yum.repos.d/CentOS-Base.repo
+
+RUN yum update -y
+RUN yum -y install php php-devel php-mbstring php-mysql php-gd php-pdo php-pear php-process php-soap php-xml php-bcmath php-pecl-zip postgresql-devel php-pgsql
+RUN yum clean all
+
+EXPOSE 80
+
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
